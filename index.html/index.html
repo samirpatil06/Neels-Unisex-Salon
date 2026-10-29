@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Neel's Unisex Salon in Maninagar, Ahmedabad. Explore salon services and request an appointment." />
+  <title>Neel's Unisex Salon | Maninagar, Ahmedabad</title>
+  <style>
+    :root {
+      --cream: #f7f4ee;
+      --paper: #fffefa;
+      --beige: #e8dfd1;
+      --ink: #292720;
+      --muted: #777268;
+      --line: #e5dfd4;
+      --accent: #8a7456;
+      --accent-dark: #65523b;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: min(1120px, 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,254,250,.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { font-family: Georgia, serif; font-size: 1.25rem; font-weight: bold; letter-spacing: .02em; }
+    .brand small { display: block; font: 10px Arial, sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a { font-size: .9rem; text-decoration: none; color: var(--muted); }
+    nav a:hover { color: var(--ink); }
+    .button {
+      display: inline-flex; justify-content: center; align-items: center;
+      padding: 13px 20px; border: 1px solid var(--ink);
+      background: var(--ink); color: white; text-decoration: none;
+      font-size: .9rem; cursor: pointer; transition: .2s;
+    }
+    .button:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .button.outline { background: transparent; color: var(--ink); }
+    .button.outline:hover { background: var(--beige); }
+    .hero {
+      background: var(--cream); padding: 76px 0 82px;
+      overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
+    .eyebrow { font-size: .75rem; text-transform: uppercase; letter-spacing: .2em; color: var(--accent); font-weight: bold; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: normal; line-height: 1.12; }
+    h1 { font-size: clamp(2.8rem, 5.5vw, 5rem); margin: 18px 0; letter-spacing: -.045em; }
+    h1 em { color: var(--accent); font-weight: normal; }
+    .hero p { max-width: 520px; color: var(--muted); font-size: 1.05rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-photo {
+      min-height: 440px; background: #ded4c5;
+      background-image: linear-gradient(0deg, rgba(38,32,24,.08), rgba(38,32,24,.02)),
+        url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85");
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+    .rating-card {
+      position: absolute; left: -22px; bottom: 26px; background: var(--paper);
+      padding: 18px 22px; box-shadow: 0 10px 30px #00000012;
+    }
+    .stars { color: #a78343; letter-spacing: .12em; }
+    .rating-card strong { display: block; font-family: Georgia, serif; font-size: 1.4rem; }
+    .rating-card span { font-size: .8rem; color: var(--muted); }
+    section { padding: 82px 0; }
+    .section-head { max-width: 650px; margin-bottom: 36px; }
+    .section-head h2 { font-size: clamp(2.2rem, 4vw, 3.25rem); margin: 10px 0 14px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .services { background: var(--paper); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service {
+      border: 1px solid var(--line); padding: 25px; background: white; min-height: 190px;
+    }
+    .service .number { color: var(--accent); font-size: .8rem; letter-spacing: .12em; }
+    .service h3 { font-size: 1.55rem; margin: 14px 0 8px; }
+    .service p { color: var(--muted); font-size: .92rem; margin: 0 0 16px; }
+    .price { border-top: 1px solid var(--line); padding-top: 12px; font-size: .9rem; font-weight: bold; }
+    .price span { color: var(--muted); font-weight: normal; }
+    .note { margin-top: 16px; color: var(--muted); font-size: .85rem; }
+    .about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 55px; align-items: center; }
+    .about-photo {
+      min-height: 390px; background: #ded4c5;
+      background-image: url("https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1100&q=85");
+      background-size: cover; background-position: center;
+    }
+    .about-copy h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin: 12px 0 20px; }
+    .about-copy p { color: var(--muted); }
+    .review-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    blockquote { margin: 0; border: 1px solid var(--line); padding: 24px; background: white; }
+    blockquote p { font-family: Georgia, serif; font-size: 1.15rem; }
+    blockquote footer { font-size: .85rem; color: var(--muted); }
+    .booking { background: var(--cream); }
+    .booking-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+    .booking-info h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin: 12px 0 18px; }
+    .booking-info p, .address { color: var(--muted); }
+    .address { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--line); }
+    form { background: white; padding: 28px; border: 1px solid var(--line); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { display: block; font-size: .85rem; font-weight: bold; margin-bottom: 7px; }
+    input, select, textarea {
+      width: 100%; padding: 13px 12px; border: 1px solid #d9d2c6;
+      border-radius: 0; background: #fffefa; color: var(--ink); font: inherit;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .field { margin-bottom: 17px; }
+    .full { grid-column: 1 / -1; }
+    .form-note { font-size: .8rem; color: var(--muted); margin: 12px 0 0; }
+    .form-status { margin-top: 14px; font-size: .9rem; }
+    .location { background: var(--paper); }
+    .location-box { border: 1px solid var(--line); padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .location-box p { margin-bottom: 0; color: var(--muted); }
+    footer.site-footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      nav { gap: 12px; }
+      nav a:not(.button) { display: none; }
+      .hero-grid, .about-grid, .booking-grid { grid-template-columns: 1fr; gap: 30px; }
+      .hero { padding: 52px 0; }
+      .hero-photo { min-height: 340px; }
+      .rating-card { left: 12px; }
+      section { padding: 60px 0; }
+      .service-grid, .review-strip { grid-template-columns: 1fr 1fr; }
+      .about-photo { min-height: 300px; }
+    }
+    @media (max-width: 520px) {
+      .brand { font-size: 1.05rem; }
+      .nav > .button { padding: 10px 12px; font-size: .8rem; }
+      h1 { font-size: 3rem; }
+      .service-grid, .review-strip, .form-grid { grid-template-columns: 1fr; }
+      .full { grid-column: auto; }
+      form { padding: 20px; }
+      .location-box { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" style="text-decoration:none">Neel's <span>Unisex Salon</span><small>Maninagar · Ahmedabad</small></a>
+      <nav aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#about">Our salon</a>
+        <a href="#reviews">Reviews</a>
+        <a class="button" href="#booking">Request appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Your style, your moment</div>
+          <h1>Feel good.<br><em>Look your best.</em></h1>
+          <p>A welcoming unisex salon for your hair, grooming and beauty-care needs in Maninagar, Ahmedabad.</p>
+          <div class="actions">
+            <a class="button" href="#booking">Request an appointment</a>
+            <a class="button outline" href="#services">Explore services</a>
+          </div>
+        </div>
+        <div class="hero-photo" role="img" aria-label="Salon interior">
+          <div class="rating-card">
+            <div class="stars" aria-label="5 stars">★★★★★</div>
+            <strong>4.9 / 5</strong>
+            <span>381 Google reviews, as provided</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our services</div>
+          <h2>Your care, your way.</h2>
+          <p>Choose a service to discuss with our team. Prices are not listed until confirmed by the salon.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service">
+            <div class="number">01 / HAIR</div><h3>Haircut & styling</h3>
+            <p>Haircuts and styling tailored to your preferred look.</p>
+            <div class="price">Price: <span>Contact salon to confirm</span></div>
+          </article>
+          <article class="service">
+            <div class="number">02 / TREATMENT</div><h3>Keratin & smoothing</h3>
+            <p>Ask the stylist which smoothing treatment suits your hair.</p>
+            <div class="price">Price: <span>Contact salon to confirm</span></div>
+          </article>
+          <article class="service">
+            <div class="number">03 / CARE</div><h3>Hair spa</h3>
+            <p>A hair-care session selected for your needs.</p>
+            <div class="price">Price: <span>Contact salon to confirm</span></div>
+          </article>
+          <article class="service">
+            <div class="number">04 / SKIN</div><h3>Facial & skincare</h3>
+            <p>Discuss available facial options with the salon team.</p>
+            <div class="price">Price: <span>Contact salon to confirm</span></div>
+          </article>
+          <article class="service">
+            <div class="number">05 / COLOUR</div><h3>Hair colour & highlights</h3>
+            <p>Explore colour options and maintenance before booking.</p>
+            <div class="price">Price: <span>Contact salon to confirm</span></div>
+          </article>
+          <article class="service">
+            <div class="number">06 / PERSONAL CARE</div><h3>Grooming services</h3>
+            <p>Ask about the available unisex grooming menu.</p>
+            <div class="price">Price: <span>Contact salon to confirm</span></div>
+          </article>
+        </div>
+        <p class="note">Service availability and prices must be confirmed directly with the salon.</p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-photo" role="img" aria-label="Hair salon styling area"></div>
+        <div class="about-copy">
+          <div class="eyebrow">A little about us</div>
+          <h2>Thoughtful care.<br>Personal style.</h2>
+          <p>Neel's Unisex Salon welcomes clients looking for hair and beauty services in Maninagar. The team can help you discuss your preferred look and the service that fits your needs.</p>
+          <p>The salon listing describes a local presence since 2014. Contact the salon to confirm service availability, pricing and appointment times.</p>
+          <a class="button" href="#booking">Plan your visit</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Client feedback</div>
+          <h2>A highly rated local salon.</h2>
+          <p>The Google listing details provided show a 4.9-star rating from 381 reviews.</p>
+        </div>
+        <div class="review-strip">
+          <blockquote>
+            <div class="stars">★★★★★</div>
+            <p>“Clean, hygienic, and awesome hospitality.”</p>
+            <footer>Excerpt from a review supplied by the business listing</footer>
+          </blockquote>
+          <blockquote>
+            <div class="stars">★★★★★</div>
+            <p>“Friendly, professional and attentive.”</p>
+            <footer>Excerpt from a review supplied by the business listing</footer>
+          </blockquote>
+          <blockquote>
+            <div class="stars">★★★★★</div>
+            <p>“Premium salon service at a price of basic-medium level salon.”</p>
+            <footer>Excerpt from the review summary supplied</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="container booking-grid">
+        <div class="booking-info">
+          <div class="eyebrow">Appointments</div>
+          <h2>Make time for you.</h2>
+          <p>Send an appointment request with your preferred service and time. This demo form opens your email app if you configure the salon's official email address in the code.</p>
+          <div class="address">
+            <strong>Visit us</strong>
+            <p>G8, Divyabhumi Avenue, beside Union Bank of India, LG Hospital Road, Jagabhai Park, Maninagar, Ahmedabad, Gujarat 380008.</p>
+          </div>
+        </div>
+        <form id="appointmentForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="customerName">Your name *</label>
+              <input id="customerName" name="customerName" required autocomplete="name" placeholder="Full name" />
+            </div>
+            <div class="field">
+              <label for="customerPhone">Phone number *</label>
+              <input id="customerPhone" name="customerPhone" required autocomplete="tel" inputmode="tel" placeholder="Your phone number" />
+            </div>
+            <div class="field">
+              <label for="service">Preferred service *</label>
+              <select id="service" name="service" required>
+                <option value="">Choose a service</option>
+                <option>Haircut & styling</option>
+                <option>Keratin & smoothing</option>
+                <option>Hair spa</option>
+                <option>Facial & skincare</option>
+                <option>Hair colour & highlights</option>
+                <option>Grooming services</option>
+                <option>Other / need advice</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">Preferred date *</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div class="field">
+              <label for="time">Preferred time</label>
+              <select id="time" name="time">
+                <option value="">Select a time</option>
+                <option>Morning</option><option>Afternoon</option><option>Evening</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contactPreference">Contact preference</label>
+              <select id="contactPreference" name="contactPreference">
+                <option>Phone call</option><option>SMS</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Anything else? (optional)</label>
+              <textarea id="message" name="message" placeholder="Tell us your preferred style or any requests"></textarea>
+            </div>
+            <div class="field full">
+              <button class="button" type="submit">Prepare appointment request</button>
+              <p class="form-note">This form does not automatically send or save bookings. Configure a verified salon email or connect a booking backend before publishing.</p>
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-box">
+        <div>
+          <div class="eyebrow">Find us</div>
+          <h2 style="font-size:2rem;margin:8px 0">Visit Neel's Unisex Salon</h2>
+          <p>G8, Divyabhumi Avenue, beside Union Bank of India, LG Hospital Road, Jagabhai Park, Maninagar, Ahmedabad, Gujarat 380008.</p>
+        </div>
+        <a class="button outline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=G8%20Divyabhumi%20Avenue%20Jagabhai%20Park%20Maninagar%20Ahmedabad%20380008">Get directions ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Neel's Unisex Salon</span>
+      <span>Maninagar, Ahmedabad · Service prices and availability subject to confirmation</span>
+    </div>
+  </footer>
+
+  <script>
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    dateInput.min = localToday;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Add a verified salon email below to let customers prepare an email request.
+    // Example: const SALON_EMAIL = "verified-address@example.com";
+    const SALON_EMAIL = "";
+
+    document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const data = new FormData(this);
+      const details = [
+        "Appointment request — Neel's Unisex Salon",
+        "",
+        "Name: " + data.get('customerName'),
+        "Phone: " + data.get('customerPhone'),
+        "Service: " + data.get('service'),
+        "Preferred date: " + data.get('date'),
+        "Preferred time: " + (data.get('time') || "Not specified"),
+        "Contact preference: " + data.get('contactPreference'),
+        "Additional notes: " + (data.get('message') || "None")
+      ].join("\n");
+
+      if (SALON_EMAIL.trim()) {
+        const subject = encodeURIComponent("Salon appointment request");
+        window.location.href = "mailto:" + SALON_EMAIL + "?subject=" + subject + "&body=" + encodeURIComponent(details);
+        document.getElementById('formStatus').textContent = "Your email app should open with the request prepared. Please send the email to submit it.";
+      } else {
+        const blob = new Blob([details], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = "salon-appointment-request.txt";
+        link.click();
+        URL.revokeObjectURL(url);
+        document.getElementById('formStatus').textContent = "Your request details were downloaded as a text file. This demo does not send bookings to the salon yet.";
+      }
+    });
+  </script>
+</body>
+</html>
